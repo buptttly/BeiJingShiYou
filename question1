@@ -1,0 +1,43 @@
+# 第一题
+def minOutput(source, target):
+    sourceSet = set(source)
+
+    # 出现target没有的字符
+    for char in target:
+        if char not in sourceSet:
+            return -1
+
+    sourceLen = len(source)
+    targetLen = len(target)
+    targetIndex = 0
+    output = 0
+
+    #
+    while targetIndex < targetLen:
+        output += 1
+        sourceIndex = 0
+
+        while sourceIndex < sourceLen and targetIndex < targetLen:
+            if source[sourceIndex] == target[targetIndex]:
+                targetIndex += 1
+            sourceIndex += 1
+
+    return output
+
+
+source=input()
+target=input()
+print(minOutput(source, target))
+
+# 示例
+# source = "abc"
+# target = "abcbc"
+# 输出: 2
+#
+# source = "abc"
+# target = "acdbc"
+# 输出: -1
+#
+# source = "xyz"
+# target = "xzyxz"
+# 输出: 3
